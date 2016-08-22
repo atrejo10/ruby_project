@@ -1,8 +1,73 @@
-<header>
-  <img src="" alt="" />
+<link rel="stylesheet" type="text/css" href="<link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+<style type="text/css">
+ #log_in p{
+  display:inline-block; 
+  font-family:'Yellowtail', cursive ; 
+ 
+
+ } 
+ #log_in{
+  margin-left:880px; 
+  display:inline-block; 
+  /*border:1px solid black;*/
+  /*width:700px; */
+ }
+
+fieldset{
+  width:600px;
+  margin-left:790px; 
+
+}
+
+h3{
+  text-align:center;
+  font-family:'Yellowtail', cursive ;  
+}
+
+h1{
+  /*text-align:left;*/
+  display:inline-block;  
+  font-family:'Yellowtail', cursive ; 
+  font-size:30px; 
+  /*background-color:red; */
+}
+
+button{
+ margin-left:250px; 
+/*vertical-align:center; */
+ width:90px;
+ display:inline-block; 
+ font-family:'Yellowtail', cursive ; 
+}
+
+
+
+textarea{
+  width:500px;
+  display:inline-block; 
+}
+
+#register{
+  font-family:'Yellowtail', cursive ; 
+}
+
+header{
+  border:1px solid black;
+  width:900px; 
+}
+
+
+
+
+
+</style>
+<h1>Crate</h1>
+<header id="log_in">
+ 
   <form action="/sessions" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<p>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <p>
 		<label>Email:
 		<input type="email" name="email">
     </label>
@@ -22,39 +87,43 @@
       <p> <%= e %> </p>
     <% end %>
   <% end %>
+<div id="register">
 <form action="/users" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<p>
+	<h3>Sign Up</h3>
+  
 		<label>First Name:
-		<input type="text" name="user[first_name]">
+		<input type="text" name="user[first_name]" placeholder="First Name">
     </label>
-	</p>
+	
+  
+    <label> Last Name:
+      <input type="text" name="user[last_name]" placeholder="Last Name">
+    </label>
+  
   <p>
-    <label> last Name:
-      <input type="text" name="user[last_name]">
+    <label id="mail"> Email:
+      <input id="email" type="email" name="user[email]" placeholder="Email">
     </label>
   </p>
-  <p>
-    <label> Email:
-      <input type="email" name="user[email]">
+	
+<h4>*Password should be at least 8 characters</h4>
+    <label>Password:
+    <input type="password" name="user[password]" placeholder="Password">
     </label>
-  </p>
-	<p>
-		<label>Password:
-		<input type="password" name="user[password]">
-    </label>
-	</p>
-<p>*Password should be at least 8 characters</p>
-  <p>
+  
+  
     <label>Password Confirmation
-    <input type="password" name="user[password_confirmation]" id="Password Confirmation">
+    <input type="password" name="user[password_confirmation]" id="Password Confirmation" placeholder="Confirm Password">
     </label>
-  </p>
+  
   <p>
     <label>Description of yourself:
-    <input type="text" name="user[description]">
     </label>
   </p>
-	<input type="submit" value="Register">
+  
+  <textarea name="user[description]" placeholder=" Do tell...."></textarea>
+	<button>Sign up!</button>
 </fieldset>
 </form>
+</div>
