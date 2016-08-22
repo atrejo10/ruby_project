@@ -1,3 +1,4 @@
+
 <header>
   <img src="" alt="" />
   <label></label>Categories
@@ -8,8 +9,11 @@
   <a href="#">Music</a> |
   </label>
   <a href="#">Edit</a> |
-  <a href="#">Log Out</a>
+  <a href="/sessions/" data-method="delete">Log Out</a>
 </header>
+
+<h2><%= @user.first_name%> <%= @user.last_name%>'s Profile Page</h2>
+<h4><%= @user.description%></h4>
 
 <form action="/photos" enctype="multipart/form-data" method="post">
   <label>Post a New Photo:</label>
@@ -31,8 +35,13 @@
 <div>
   <h2>My Photo Gallery</h2>
   <% @photos.each do |photo| %>
-  <img src="<%=photo.avatar.url%>" alt="" />
+  <img src="<%=photo.avatar.url(:thumb)%>" alt="" />
   <!-- <p>Uploaded by:  user.name </p>
   <p>  user.description </p> -->
   <% end%>
+</div>
+
+
+<div id="large">
+
 </div>

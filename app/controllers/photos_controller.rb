@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   def create
     photo = Photo.new(photo_params)
     if photo.save
-      redirect_to crate_path(session[:user_id])
+      redirect_to crate_path(current_user.id)
     else
       flash[:errors] = photo.errors.full_messages
       redirect_to :back
