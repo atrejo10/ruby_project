@@ -3,6 +3,7 @@ class CrateController < ApplicationController
   end
   def show
     @categories = Category.all
-    @photos = Photo.all
+    @photos = Photo.where("user_id =?", current_user.id)
+    @user = User.find(current_user.id)
   end
 end

@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to crate_path(session[:user_id])
+      redirect_to crate_path(current_user.id)
     else
-      flash[:errors] = ["Invalid"]
+      flash[:shake] = ["Invalid"]
       redirect_to :back
     end
   end

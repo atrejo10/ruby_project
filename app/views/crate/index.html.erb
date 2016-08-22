@@ -1,9 +1,16 @@
 <header>
   <img src="" alt="" />
-  <form action="/sessions" method="post">
+  <% if flash[:shake] %>
+  <script type="text/javascript">
+      $(document).ready(function(){
+        $("#login").effect("shake");
+      });
+  </script>
+  <%end%>
+  <form id="login" action="/sessions" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<p>
-		<label>Email:
+		<label >Email:
 		<input type="email" name="email">
     </label>
 	</p>
@@ -16,6 +23,8 @@
 	<input type="submit" value="Log In">
 </form>
 </header>
+
+
 <fieldset>
     <% if flash[:errors] %>
     <% flash[:errors].each do |e| %>
@@ -52,7 +61,7 @@
   </p>
   <p>
     <label>Description of yourself:
-    <input type="text" name="user[description]">
+<textarea name="user[description]" rows="8" cols="40"></textarea>
     </label>
   </p>
 	<input type="submit" value="Register">
