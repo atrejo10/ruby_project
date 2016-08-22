@@ -1,0 +1,38 @@
+<header>
+  <img src="" alt="" />
+  <label></label>Categories
+  <a href="#">Sports</a> |
+  <a href="#">Architecture</a> |
+  <a href="#">Fashion</a> |
+  <a href="#">Food</a> |
+  <a href="#">Music</a> |
+  </label>
+  <a href="#">Edit</a> |
+  <a href="#">Log Out</a>
+</header>
+
+<form action="/photos" enctype="multipart/form-data" method="post">
+  <label>Post a New Photo:</label>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<label>Description:</label>
+  <input type="text" name="photo[description]" value="">
+  <select name="photo[category_id]">
+  <% @categories.each do |category| %>
+    <option value="<%=category.id%>"><%=category.category%></option>
+    <%end%>
+  </select>
+  <input type="hidden" name="photo[user_id]" value="<%=session[:user_id]%>">
+  <input type="file" name="photo[avatar]">
+  <input type="submit" value="New Photo">
+</form>
+
+
+
+<div>
+  <h2>My Photo Gallery</h2>
+  <% @photos.each do |photo| %>
+  <img src="<%=photo.avatar.url%>" alt="" />
+  <!-- <p>Uploaded by:  user.name </p>
+  <p>  user.description </p> -->
+  <% end%>
+</div>
