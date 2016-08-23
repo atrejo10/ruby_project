@@ -10,7 +10,6 @@ class PhotosController < ApplicationController
     end
 
   def find
-    puts 'hello'
     @photo = Photo.joins(:user).find(params[:id])
     render json: @photo
   end
@@ -18,7 +17,7 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:description, :user_id, :category_id, :avatar)
+    params.require(:photo).permit(:description, :user_id, :category_id, :title, :avatar)
   end
 
 

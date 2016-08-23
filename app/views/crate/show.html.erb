@@ -1,57 +1,89 @@
 <style>
-
-#larger{
-position:relative;
-left:75%;
+*{
+  text-align: center;
+  background-color: skyblue;
+}
+#centeredImage{
+  padding-bottom: 0.2em;
+}
+#title, #description{
+  text-align: center;
 }
 
+#left{
+  position:fixed;
+  left: 0%;
+  height: 100%;
+  /*background-color: darkblue;*/
+}
+#left img{
+  display: block;
+}
+#right{
+  position:fixed;
+  right: 0%;
+  height: 100%;
+  /*background-color: darkblue;*/
+}
+#right img{
+  display: block;
+}
+#bottom{
+  /*background-color: darkblue;*/
+  width: 80%;
+  position: fixed;
+  right: 8.1em;
+  bottom: 0;
+}
 
-#large{
-  /*display:inline-block;*/
-  margin-left:1000px;
-  /*width:880px;
-  height:500px;*/
-  border-radius:50%;
-  /*position:relative;*/
-  /*bottom:70px; */
+#bottom img{
+  display: inline-block;
+  vertical-align: top;
 }
 .thumbnail{
-display:inline-block;
-height:100px;
-width:100px;
-margin-right:20px;
-padding-bottom:10px;
-border-radius:50%;
-
-
-}
-#smaller{
-display:inline-block;
-  width:900px;
+  height: 10em;
+  width: 10em;
+  margin: 0.5em;
+  -webkit-filter: grayscale(100%);
+   cursor: pointer; cursor: hand;
+   transition: all 0.5s ease;
 }
 
+.thumbnail:hover{
+  -webkit-filter: grayscale(0%);
+  border-radius: 50%;
+}
 
+header{
+  /*top: 0;*/
+  background-color: blue;
+  height: 50px;
+  width: 100%;
+  border: 1px solid blue;
+}
 
 </style>
 <header>
   <img src="" alt="" />
   <label></label>Categories
-  <a href="#">Sports</a> |
+  <a href="/crate/category">Sports</a> |
   <a href="#">Architecture</a> |
   <a href="#">Fashion</a> |
   <a href="#">Food</a> |
   <a href="#">Music</a> |
   </label>
-  <a href="#">Edit</a> |
+  <a href="/users/edit/<%=@user.id%>">Edit</a> |
   <a href="/sessions/" data-method="delete">Log Out</a>
 </header>
 
-<h2><%= @user.first_name%> <%= @user.last_name%>'s Profile Page</h2>
+<h2><%= @user.first_name%> <%= @user.last_name%></h2>
 <h4><%= @user.description%></h4>
 
 <form action="/photos" enctype="multipart/form-data" method="post">
   <label>Post a New Photo:</label>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>Title:</label>
+    <input type="text" name="photo[title]" value="">
 <label>Description:</label>
   <input type="text" name="photo[description]" value="">
   <select name="photo[category_id]">
@@ -67,11 +99,28 @@ display:inline-block;
 
 
   <h2>My Photo Gallery</h2>
-  <div id="smaller">
-  <% @photos.each do |photo| %>
-  <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:thumb)%>" alt="" />
-  <% end%>
+  <div id="left">
+  <%if @photos %>
+      <% @photos[0...4].each do |photo| %>
+        <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:large)%>" alt="" />
+      <%end%>
+  <%end%>
 </div>
+<div id="bottom">
+<% if @photos[5] %>
+      <% @photos[4...10].each do |photo| %>
+        <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:large)%>" alt="" />
+      <%end%>
+<%end%>
+</div>
+<div id="right">
+<% if @photos[10] %>
+    <% @photos[10...14].each do |photo| %>
+      <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:large)%>" alt="" />
+    <%end%>
+<%end%>
+</div>
+
 
 <script type="text/javascript">
 
@@ -80,20 +129,22 @@ display:inline-block;
         var id = $(this).attr("id");
         $.get('/photos/find/' + id, function(response)
         {
-          console.log(response);
           var description = "";
           description += "<h3>" + response.description + "</h3>"
-
-
-          $('#larger').html(description);
+          var title = "";
+          title += "<h2>" + response.title + "</h2>"
+          $('#description').html(description);
+          $('#title').html(title);
         });
-        $('#large').attr('src', $(this).attr('src'));
+          $('.largerimage').attr('src', $(this).attr('src'));
       })
   })
 
-
 </script>
-
-<div id="larger">
+<%if @photos.first%>
+<div id="centeredImage">
+      <h2 id="title"><%=@photos.first.title%></h2>
+      <h3 id="description"><%=@photos.first.description%></h3>
+      <img class="largerimage" src="<%=@photos.first.avatar.url(:large)%>" alt="" />
 </div>
-<img id="large" src="" alt="" />
+<% end %>
