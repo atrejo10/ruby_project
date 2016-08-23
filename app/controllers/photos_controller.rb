@@ -9,6 +9,12 @@ class PhotosController < ApplicationController
     end
     end
 
+  def find
+    puts 'hello'
+    @photo = Photo.joins(:user).find(params[:id])
+    render json: @photo
+  end
+
 
   private
   def photo_params

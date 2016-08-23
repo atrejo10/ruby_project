@@ -2,53 +2,54 @@
 <link rel="stylesheet" type="text/css" href="<link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
 <style type="text/css">
  #log_in p{
-  display:inline-block; 
-  font-family:'Yellowtail', cursive ; 
- 
+  display:inline-block;
+  font-family:'Yellowtail', cursive ;
 
- } 
+
+ }
  #log_in{
-  margin-left:880px; 
-  display:inline-block; 
+  margin-left:880px;
+  display:inline-block;
   /*border:1px solid black;*/
   /*width:700px; */
  }
 
 fieldset{
   width:600px;
-  margin-left:790px; 
+  margin-left:790px;
 
 }
 
 h3{
   text-align:center;
-  font-family:'Yellowtail', cursive ;  
+  font-family:'Yellowtail', cursive ;
 }
 
 h1{
   /*text-align:left;*/
-  display:inline-block;  
-  font-family:'Yellowtail', cursive ; 
-  font-size:30px; 
+  display:inline-block;
+  font-family:'Yellowtail', cursive ;
+  font-size:30px;
   /*background-color:red; */
 }
 
 button{
- margin-left:250px; 
+ margin-left:250px;
 /*vertical-align:center; */
  width:90px;
- display:inline-block; 
- font-family:'Yellowtail', cursive ; 
+ display:inline-block;
+ font-family:'Yellowtail', cursive ;
 }
 
 
 
 textarea{
   width:500px;
-  display:inline-block; 
+  display:inline-block;
 }
 
 #register{
+<<<<<<< HEAD
   font-family:'Yellowtail', cursive ; 
 }
 /*
@@ -56,19 +57,12 @@ header{
   border:1px solid black;
   width:900px; 
 }*/
-
-
-
-
-
 </style>
 <h1>Crate</h1>
 
-
-
-
 <header id="log_in">
- 
+  <img src="" alt="" />
+
   <% if flash[:shake] %>
   <script type="text/javascript">
       $(document).ready(function(){
@@ -104,37 +98,37 @@ header{
 <form action="/users" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<h3>Sign Up</h3>
-  
+
 		<label>First Name:
 		<input type="text" name="user[first_name]" placeholder="First Name">
     </label>
-	
-  
+
+
     <label> Last Name:
       <input type="text" name="user[last_name]" placeholder="Last Name">
     </label>
-  
+
   <p>
     <label id="mail"> Email:
       <input id="email" type="email" name="user[email]" placeholder="Email">
     </label>
   </p>
-	
+
 <h4>*Password should be at least 8 characters</h4>
     <label>Password:
     <input type="password" name="user[password]" placeholder="Password">
     </label>
-  
-  
+
+
     <label>Password Confirmation
     <input type="password" name="user[password_confirmation]" id="Password Confirmation" placeholder="Confirm Password">
     </label>
-  
+
   <p>
     <label>Description of yourself:
     </label>
   </p>
-  
+
   <textarea name="user[description]" placeholder=" Do tell...."></textarea>
 	<button>Sign up!</button>
 </fieldset>

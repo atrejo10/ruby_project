@@ -1,4 +1,38 @@
+<style>
 
+#larger{
+position:relative;
+left:75%;
+}
+
+
+#large{
+  /*display:inline-block;*/
+  margin-left:1000px;
+  /*width:880px;
+  height:500px;*/
+  border-radius:50%;
+  /*position:relative;*/
+  /*bottom:70px; */
+}
+.thumbnail{
+display:inline-block;
+height:100px;
+width:100px;
+margin-right:20px;
+padding-bottom:10px;
+border-radius:50%;
+
+
+}
+#smaller{
+display:inline-block;
+  width:900px;
+}
+
+
+
+</style>
 <header>
   <img src="" alt="" />
   <label></label>Categories
@@ -32,16 +66,34 @@
 
 
 
-<div>
   <h2>My Photo Gallery</h2>
+  <div id="smaller">
   <% @photos.each do |photo| %>
-  <img src="<%=photo.avatar.url(:thumb)%>" alt="" />
-  <!-- <p>Uploaded by:  user.name </p>
-  <p>  user.description </p> -->
+  <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:thumb)%>" alt="" />
   <% end%>
 </div>
 
+<script type="text/javascript">
 
-<div id="large">
+  $(document).ready(function(){
+      $('.thumbnail').on('click', function(){
+        var id = $(this).attr("id");
+        $.get('/photos/find/' + id, function(response)
+        {
+          console.log(response);
+          var description = "";
+          description += "<h3>" + response.description + "</h3>"
 
+
+          $('#larger').html(description);
+        });
+        $('#large').attr('src', $(this).attr('src'));
+      })
+  })
+
+
+</script>
+
+<div id="larger">
 </div>
+<img id="large" src="" alt="" />
