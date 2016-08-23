@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'crate/index'
   root 'crate#index'
+  get 'crate/category/:id'=> 'crate#category'
+  get'crate/find:id'=> 'crate#find'
+  get'crate/show/:id'=>'crate#show'
   delete "sessions" => "sessions#destroy", :as => "session_destroy"
   post '/sessions' => 'sessions#create'
   post 'users' => 'users#create'

@@ -35,12 +35,10 @@ display:inline-block;
 </style>
 <header>
   <img src="" alt="" />
-  <label></label>Categories
-  <a href="#">Sports</a> |
-  <a href="#">Architecture</a> |
-  <a href="#">Fashion</a> |
-  <a href="#">Food</a> |
-  <a href="#">Music</a> |
+  <label></label>Categories:
+ <% @categories.each do |category| %>
+  <a href="/crate/category/<%= category.id %>"><%= category.category %></a>
+  <% end %>
   </label>
   <a href="#">Edit</a> |
   <a href="/sessions/" data-method="delete">Log Out</a>
@@ -89,6 +87,8 @@ display:inline-block;
         });
         $('#large').attr('src', $(this).attr('src'));
       })
+          
+
   })
 
 
