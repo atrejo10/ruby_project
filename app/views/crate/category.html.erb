@@ -10,11 +10,12 @@
 
 	}
 	img{
-
 		border-radius:50%;
 		margin-left:10px;
 		margin-top:10px;
 		display:inline-block;
+    height: 210px;
+    width:200px;
 
 	}
 	#sports{
@@ -51,14 +52,11 @@
 		display:inline-block;
 		margin-left:900px;
 		/*margin-bottom:900px; */
-
 	}
 	#large{
 		display:inline-block;
 		position:relative;
 		bottom:400px;
-
-
 	}
 </style>
 <div id="header">
@@ -68,40 +66,32 @@
 <script type="text/javascript">
 
   $(document).ready(function(){
-      $('.thumb').on('click', function(){
+      $('.photo').on('click', function(){
         var id = $(this).attr("id");
-        var cat = <%=@category.id%>
-        console.log(id)
-        console.log(cat)
-        $.get('/photos/find/' + id , function(response)
+        $.get('/crate/find/' + id, function(response)
         {
-         console.log(response)
+          console.log(response);
           var description = "";
           description += "<h3>" + response.description + "</h3>"
-
-          author += "<h3>" + response. + "</h3>"
-          console.log(author)
-          $('#something').html(description);
-
+          var title = "";
+          title += "<h2>" + response.title + "</h2>"
+          $('#description').html(description);
+          $('#title').html(title);
         });
-        $('#large').attr('src', $(this).attr('src'));
+          $('#large').attr('src', $(this).attr('src'));
       })
 
 
   })
- </script>
+
+</script>
 <div id="sports">
 	<% @photo.each do |photo|  %>
-	<img id="<%= photo.id %>" class= "thumb" src="<%= photo.avatar.url(:thumb)%>">
-	<script type="text/javascript">
-		var first = '<%= photo.user.first_name %>';
-		console.log(first);
-	</script>
-	<%= photo.user.first_name %>
-	<% end %>
+	<img id="<%= photo.id %>" class= "photo" src="<%= photo.avatar.url(:large)%>">
+  <%end%>
 </div>
 
 <div id="new_div">
-	<img  id="large" src="">
-	<p id="something"></p>
+	<img id="large" src="">
+	<p id="description"></p>
 </div>

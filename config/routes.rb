@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'photos' => 'photos#create'
   get 'crate/:id' => 'crate#show', :as => "crate"
   get 'photos/find/:id' => 'photos#find'
+  get 'crate/find/:id' => 'crate#find'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

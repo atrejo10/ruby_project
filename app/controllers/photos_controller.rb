@@ -12,6 +12,7 @@ class PhotosController < ApplicationController
   def find
     @photo = Photo.joins(:user).find(params[:id])
     render json: @photo
+    # format.json { render json: { all_data: {photo: @photo, user: @user}}}
   end
 
 

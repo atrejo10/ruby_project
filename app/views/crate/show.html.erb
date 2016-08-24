@@ -9,7 +9,6 @@
 #title, #description{
   text-align: center;
 }
-
 #left{
   position:fixed;
   left: 0%;
@@ -35,7 +34,6 @@
   right: 8.1em;
   bottom: 0;
 }
-
 #bottom img{
   display: inline-block;
   vertical-align: top;
@@ -48,12 +46,10 @@
    cursor: pointer; cursor: hand;
    transition: all 0.5s ease;
 }
-
 .thumbnail:hover{
   -webkit-filter: grayscale(0%);
   border-radius: 50%;
 }
-
 header{
   /*top: 0;*/
   background-color: blue;
@@ -61,7 +57,6 @@ header{
   width: 100%;
   border: 1px solid blue;
 }
-
 </style>
 <header>
   <img src="" alt="" />
@@ -123,7 +118,6 @@ header{
 
 
 <script type="text/javascript">
-
   $(document).ready(function(){
       $('.thumbnail').on('click', function(){
         var id = $(this).attr("id");
@@ -138,10 +132,7 @@ header{
         });
           $('.largerimage').attr('src', $(this).attr('src'));
       })
-
-
   })
-
 </script>
 <%if @photos.first%>
 <div id="centeredImage">
