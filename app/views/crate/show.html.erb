@@ -196,6 +196,7 @@ h4{
         var id = $(this).attr("id");
         $.get('/photos/find/' + id, function(response)
         {
+          console.log(response);
           var description = "";
           description += "<h3>" + response.description + "</h3>"
           var title = "";
