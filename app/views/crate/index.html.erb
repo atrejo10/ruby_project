@@ -1,6 +1,33 @@
 
 <link rel="stylesheet" type="text/css" href="<link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
 <style type="text/css">
+
+@media only screen and (min-width: 1024px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+
+
+ 
+body{
+
+  background-image:image-url('photo.jpg'); 
+  background-repeat:no-repeat;
+  background-size:100%; 
+  /*width:1000px;*/
+}
+
+
  #log_in p{
   display:inline-block;
   font-family:'Yellowtail', cursive ;
@@ -8,20 +35,17 @@
 
  }
  #log_in{
-  margin-left:880px;
+  margin-left:70%;
   display:inline-block;
   /*border:1px solid black;*/
   /*width:700px; */
  }
-
-fieldset{
-  width:600px;
-  margin-left:790px;
-
-}
-
 h3{
-  text-align:center;
+  text-align:right;
+  position:relative;
+  left:40px; 
+  /*font-size:10px;*/
+  /*padding-left:200px; */
   font-family:'Yellowtail', cursive ;
 }
 
@@ -34,23 +58,40 @@ h1{
 }
 
 button{
- margin-left:250px;
+ margin-left:170px;
 /*vertical-align:center; */
  width:90px;
  display:inline-block;
- font-family:'Yellowtail', cursive ;
+ font-family:'Yellowtail', cursive ;'
+ font-weight:bold;
+
 }
 
 
 
 textarea{
-  width:500px;
+  width:450px;
   display:inline-block;
 }
 
 #register{
-
+  width:200px;
+  height:500px; 
   font-family:'Yellowtail', cursive ; 
+  padding-left:10px; 
+  font-weight:bold; 
+margin-right:0px; 
+
+}
+#transparent{
+  margin-left:auto; 
+  width:500px;
+  height:600px; 
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+
+}
 }
 /*
 header{
@@ -58,6 +99,8 @@ header{
   width:900px; 
 }*/
 </style>
+
+
 <h1>Crate</h1>
 
 <header id="log_in">
@@ -88,7 +131,7 @@ header{
 </header>
 
 
-<fieldset>
+<div id="transparent">
     <% if flash[:errors] %>
     <% flash[:errors].each do |e| %>
       <p> <%= e %> </p>
@@ -98,18 +141,18 @@ header{
 <form action="/users" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<h3>Sign Up</h3>
-
+<p>
 		<label>First Name:
 		<input type="text" name="user[first_name]" placeholder="First Name">
     </label>
-
-
+</p>
+    <p>
     <label> Last Name:
       <input type="text" name="user[last_name]" placeholder="Last Name">
     </label>
-
+    </p>
   <p>
-    <label id="mail"> Email:
+    <label id="mail"> Email:<br>
       <input id="email" type="email" name="user[email]" placeholder="Email">
     </label>
   </p>
@@ -117,10 +160,10 @@ header{
 <h4>*Password should be at least 8 characters</h4>
     <label>Password:
     <input type="password" name="user[password]" placeholder="Password">
-    </label>
+    </label><br>
 
 
-    <label>Password Confirmation
+    <label>Password Confirmation:
     <input type="password" name="user[password_confirmation]" id="Password Confirmation" placeholder="Confirm Password">
     </label>
 
@@ -131,6 +174,8 @@ header{
 
   <textarea name="user[description]" placeholder=" Do tell...."></textarea>
 	<button>Sign up!</button>
-</fieldset>
+
 </form>
+</div>
+
 </div>

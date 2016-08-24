@@ -1,47 +1,79 @@
+<link rel="stylesheet" type="text/css" href="<link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+
 <style>
+
 *{
   text-align: center;
-  background-color: skyblue;
+
+}
+body{
+  
+    /*background:#5B5151;*/
+  background: linear-gradient(to bottom right, #948686, #c3b2a3, #e0cc84, #e6d2b9);
 }
 #centeredImage{
-  padding-bottom: 0.2em;
+  padding-bottom: 5em;
+  display:inline-block; 
+  /*padding-right:200px; */
+    position:relative;
+    bottom:120px;
+
+    
+    background-color:#567B82; 
+}
+
+#centeredImage img {
+    width:600px;
+    height:400px;
+    border:1px solid gray; 
+
 }
 #title, #description{
   text-align: center;
+  font-family:'Yellowtail', cursive;
+    /*background-color:#567B82; */
+  /*color:#E7856F; */
+
+
 }
 #left{
-  position:fixed;
-  left: 0%;
-  height: 100%;
-  /*background-color: darkblue;*/
+  /*position:fixed;*/
+  /*left: 0%;*/
+  width:200px;
+  height: 700px;
+  /*background-color:#828E8C;*/
+  background-color:#567B82;
+  display: inline-block;
+  margin-right:20px; 
+  
+
+  overflow:scroll; 
 }
 #left img{
-  display: block;
+  border:1px solid gray;  
+  display:block;
 }
 #right{
-  position:fixed;
-  right: 0%;
-  height: 100%;
-  /*background-color: darkblue;*/
+  /*background-color:#828E8C;*/
+  /*position:fixed;*/
+  /*right: 0%;*/
+  width:200px;
+  height: 700px;
+  background-color: #567B82;
+  margin-left:20px; 
+  display:inline-block; 
+  overflow:scroll; 
+
 }
 #right img{
+  border:1px solid gray;
   display: block;
 }
-#bottom{
-  /*background-color: darkblue;*/
-  width: 80%;
-  position: fixed;
-  right: 8.1em;
-  bottom: 0;
-}
-#bottom img{
-  display: inline-block;
-  vertical-align: top;
-}
+
 .thumbnail{
-  height: 10em;
-  width: 10em;
-  margin: 0.5em;
+  height: 160px;
+  width: 160px;
+  margin: 8px;
   -webkit-filter: grayscale(100%);
    cursor: pointer; cursor: hand;
    transition: all 0.5s ease;
@@ -52,69 +84,110 @@
 }
 header{
   /*top: 0;*/
-  background-color: blue;
-  height: 50px;
+  background-color: #567B82;
+  /*background: linear-gradient(to bottom right, #948686, #c3b2a3, #e0cc84, #e6d2b9);*/
+  height: 80px;
   width: 100%;
-  border: 1px solid blue;
+  border: 1px solid gray;
+  border-left:none;
+  border-right:none;
+  margin-bottom:30px; 
 }
+
+h2{
+  font-family:'Yellowtail', cursive; 
+  /*background-color:#567B82; */
+  color:white;
+}
+
+h3{
+  font-family:'Yellowtail', cursive; 
+  background-color:#567B82; 
+  color:white;
+}
+h4{
+  font-family:'Yellowtail',cursive; 
+  font-size:;10px 
+  background-color:#567B82; 
+  color:white;
+}
+
+
+#categories{
+  font-family:'Yellowtail', cursive;
+  font-size:30px;  
+  text-decoration:none;
+  color:black;  
+  padding-right:50px; 
+   background-color: #567B82;
+   color:white;
+}
+#categories:hover{
+
+  color:#3DAEA9; 
+}
+#tit,#desc{
+  font-family:'Yellowtail',cursive; 
+  color:white;
+   
+
+}
+#edit, #log_out{
+    font-family:'Yellowtail',cursive; 
+   background-color: #567B82;
+   text-decoration:none; 
+   color:white;
+ }
+
+#edit:hover{
+  color:#3DAEA9;
+}
+ #log_out:hover{
+  color:#3DAEA9;
+ }
+
+#main{
+    background-color:#567B82;
+    width:1050px;
+    display:inline-block; 
+}
+
+#form{
+  margin-bottom:20px; 
+}
+
 </style>
+
+
+
 <header>
   <img src="" alt="" />
 
-  <label></label>Categories:
- <% @categories.each do |category| %>
-  <a href="/crate/category/<%= category.id %>"><%= category.category %></a>
-  <% end %>
 
-  </label>
-  <a href="/users/edit/<%=@user.id%>">Edit</a> |
-  <a href="/sessions/" data-method="delete">Log Out</a>
+ <% @categories.each do |category| %>
+  <a id="categories" href="/crate/category/<%= category.id %>"><%= category.category %></a>
+  <% end %>
+<a id="edit" href="/users/edit/<%=@user.id%>">Edit</a> |
+  <a id= "log_out" href="/sessions/" data-method="delete">Log Out</a>
+
+
+  
 </header>
 
-<h2><%= @user.first_name%> <%= @user.last_name%></h2>
+<h2><%= @user.first_name %>'s Photo Gallery</h2>
 <h4><%= @user.description%></h4>
 
-<form action="/photos" enctype="multipart/form-data" method="post">
-  <label>Post a New Photo:</label>
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <label>Title:</label>
-    <input type="text" name="photo[title]" value="">
-<label>Description:</label>
-  <input type="text" name="photo[description]" value="">
-  <select name="photo[category_id]">
-  <% @categories.each do |category| %>
-    <option value="<%=category.id%>"><%=category.category%></option>
-    <%end%>
-  </select>
-  <input type="hidden" name="photo[user_id]" value="<%=session[:user_id]%>">
-  <input type="file" name="photo[avatar]">
-  <input type="submit" value="New Photo">
-</form>
-
-
-
-  <h2>My Photo Gallery</h2>
+<div id="main">
   <div id="left">
-  <%if @photos %>
-      <% @photos[0...4].each do |photo| %>
+  <% if @photos[0] %>
+      <% @photos[0...10].each do |photo| %>
         <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:large)%>" alt="" />
       <%end%>
-  <%end%>
+  <% end %>    
+  
 </div>
-<div id="bottom">
-<% if @photos[5] %>
-      <% @photos[4...10].each do |photo| %>
-        <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:large)%>" alt="" />
-      <%end%>
-<%end%>
-</div>
-<div id="right">
-<% if @photos[10] %>
-    <% @photos[10...14].each do |photo| %>
-      <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:large)%>" alt="" />
-    <%end%>
-<%end%>
-</div>
+
+
 
 
 <script type="text/javascript">
@@ -141,3 +214,34 @@ header{
       <img class="largerimage" src="<%=@photos.first.avatar.url(:large)%>" alt="" />
 </div>
 <% end %>
+
+
+<div id="right">
+<% if @photos[10] %>
+    <% @photos[10...100].each do |photo| %>
+      <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:large)%>" alt="" />
+    <%end%>
+<%end%>
+
+
+
+</div>
+
+<form id="form" action="/photos" enctype="multipart/form-data" method="post">
+  
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label id="tit">Title:</label>
+    <input type="text" name="photo[title]" value="">
+<label id="desc">Description:</label>
+  <input type="text" name="photo[description]" value="">
+  <select name="photo[category_id]">
+  <% @categories.each do |category| %>
+    <option value="<%=category.id%>"><%=category.category%></option>
+    <%end%>
+  </select>
+  <input type="hidden" name="photo[user_id]" value="<%=session[:user_id]%>">
+  <input type="file" name="photo[avatar]">
+  <input type="submit" value="New Photo">
+</form>
+
+</div>

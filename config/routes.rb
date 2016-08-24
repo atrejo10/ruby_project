@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'crate/index'
   root 'crate#index'
-
+  patch 'users/:id'=>'users#edit'
   get 'crate/category/:id'=> 'crate#category'
   get'crate/find:id'=> 'crate#find'
   get'crate/show/:id'=>'crate#show'
