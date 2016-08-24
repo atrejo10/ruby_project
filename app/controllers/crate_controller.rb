@@ -11,12 +11,11 @@ class CrateController < ApplicationController
 
   def category
   	@category = Category.find_by_id(params[:id])
-  	@photo = Photo.where("category_id= ?", params[:id])
+  	@photo = Photo.joins(:user).where("category_id= ?", params[:id])
   end
 
   def find
-   @photo = Photo.joins(:user).find_by("photo_id = ?",params[:id])
-   @user = User.find(@photo.user_id)
-   format.json { render json: { all_data: {photo: @photo, user: @user}}}
+    @photo = Photo.joins(:user).select(:first_name, "photos.description", "photos.id", :title, :last_name).where("photos.id = ?", params[:id])
+    render json: @photo
   end
 end
