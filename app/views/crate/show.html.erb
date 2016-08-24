@@ -65,12 +65,12 @@ header{
 </style>
 <header>
   <img src="" alt="" />
-  <label></label>Categories
-  <a href="/crate/category">Sports</a> |
-  <a href="#">Architecture</a> |
-  <a href="#">Fashion</a> |
-  <a href="#">Food</a> |
-  <a href="#">Music</a> |
+
+  <label></label>Categories:
+ <% @categories.each do |category| %>
+  <a href="/crate/category/<%= category.id %>"><%= category.category %></a>
+  <% end %>
+
   </label>
   <a href="/users/edit/<%=@user.id%>">Edit</a> |
   <a href="/sessions/" data-method="delete">Log Out</a>
@@ -138,6 +138,8 @@ header{
         });
           $('.largerimage').attr('src', $(this).attr('src'));
       })
+
+
   })
 
 </script>

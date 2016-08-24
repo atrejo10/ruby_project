@@ -1,1 +1,107 @@
-hello
+
+<link rel="stylesheet" type="text/css" href="<link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+<style type="text/css">
+	html{
+		height:100%;
+	}
+	body{
+		height:100%;
+		/*background:linear-gradient(#e6f5ff,#ccebff,#b3e0ff,#99d6ff); */
+
+	}
+	img{
+
+		border-radius:50%;
+		margin-left:10px;
+		margin-top:10px;
+		display:inline-block;
+
+	}
+	#sports{
+		/*margin-left:370px; */
+		background-color:#004a80;
+		width:500px;
+		height:500px;
+		overflow:scroll;
+		display:inline-block;
+
+	}
+
+	h1{
+		display: inline-block;
+		font-family:'Yellowtail', cursive;
+		padding-left:100px;
+		font-size:40px;
+		color:white;
+	}
+	a{
+		display:inline-block;
+		margin-left:1000px;
+		font-family:'Yellowtail', cursive;
+		text-decoration:none;
+		font-size:20px;
+		color:white;
+	}
+	#header{
+		background-color:#004a80;
+		margin-bottom:15px;
+
+	}
+	#new_div{
+		display:inline-block;
+		margin-left:900px;
+		/*margin-bottom:900px; */
+
+	}
+	#large{
+		display:inline-block;
+		position:relative;
+		bottom:400px;
+
+
+	}
+</style>
+<div id="header">
+	<h1><%= @category.category %></h1>
+	<a href="/crate/show/">Go back</a>
+</div>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+      $('.thumb').on('click', function(){
+        var id = $(this).attr("id");
+        var cat = <%=@category.id%>
+        console.log(id)
+        console.log(cat)
+        $.get('/photos/find/' + id , function(response)
+        {
+         console.log(response)
+          var description = "";
+          description += "<h3>" + response.description + "</h3>"
+
+          author += "<h3>" + response. + "</h3>"
+          console.log(author)
+          $('#something').html(description);
+
+        });
+        $('#large').attr('src', $(this).attr('src'));
+      })
+
+
+  })
+ </script>
+<div id="sports">
+	<% @photo.each do |photo|  %>
+	<img id="<%= photo.id %>" class= "thumb" src="<%= photo.avatar.url(:thumb)%>">
+	<script type="text/javascript">
+		var first = '<%= photo.user.first_name %>';
+		console.log(first);
+	</script>
+	<%= photo.user.first_name %>
+	<% end %>
+</div>
+
+<div id="new_div">
+	<img  id="large" src="">
+	<p id="something"></p>
+</div>
