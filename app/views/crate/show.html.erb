@@ -1,96 +1,74 @@
-<link rel="stylesheet" type="text/css" href="<link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Raleway" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="assets/stylesheets/crate.scss">
 
 <style>
+@media only screen and (min-width: 1024px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+
+
 
 *{
   text-align: center;
 
 }
 body{
-
-<<<<<<< HEAD
+    background:#a89070;
+    /*opacity:0.6; */
+    /*background-image:url('http://www.highreshdwallpapers.com/wp-content/uploads/2014/05/Plain-and-Simple.jpg') */
   
-    background:#5B5151;
-  /*background: linear-gradient(to bottom right, #948686, #c3b2a3, #e0cc84, #e6d2b9);*/
- 
-
-  /*background-image:url("http://paper-backgrounds.com/textureimages/2012/07/old-gray-concrete-wall-texture.jpg"); */
-  /*background:white;*/
-=======
-
-    /*background:#5B5151;
-  background: linear-gradient(to bottom right, #948686, #c3b2a3, #e0cc84, #e6d2b9);*/
-
-
-  background-image:url("http://paper-backgrounds.com/textureimages/2012/07/old-gray-concrete-wall-texture.jpg");
->>>>>>> 2e11e878819b70733388bab5abf84ede64fa36da
   background-repeat:no-repeat;
   background-size:cover;
   /*width:1000px;*/
-
-
-
 }
 #centeredImage{
   padding-bottom: 5em;
   display:inline-block;
   /*padding-right:200px; */
     position:relative;
-    bottom:120px;
-
-
-    background-color:#567B82;
+    /*bottom:120px;*/
+    /*background-color:orange;*/
 }
 
 #centeredImage img {
+
     width:600px;
     height:400px;
     border:1px solid gray;
-
 }
 #title, #description{
   text-align: center;
-  font-family:'Yellowtail', cursive;
+  font-family:'Raleway', sans-serif;
     background-color:#567B82;
   /*color:#E7856F; */
-
-
 }
-#left{
-  /*position:fixed;*/
-  /*left: 0%;*/
-  width:200px;
-  height: 700px;
-  /*background-color:#828E8C;*/
-  background-color:#567B82;
-  display: inline-block;
-  margin-right:20px;
 
 
-  overflow:scroll;
-}
-#left img{
-  border:1px solid gray;
-  display:block;
-}
 #right{
   /*background-color:#828E8C;*/
   /*position:fixed;*/
   /*right: 0%;*/
-  width:200px;
-  height: 700px;
-  background-color: #567B82;
+  width:1000px;
+  /*height: 700px;*/
+  /*background-color: orange;*/
   margin-left:20px;
-  display:inline-block;
-  overflow:scroll;
+  /*display:inline-block;*/
+ overflow-x: scroll;   
+overflow-y: hidden;   
+white-space: nowrap;
 
 }
-#right img{
-  border:1px solid gray;
-  display: block;
-}
-
 .thumbnail{
   height: 160px;
   width: 160px;
@@ -105,68 +83,62 @@ body{
 }
 header{
   /*top: 0;*/
-  background-color: #567B82;
+  /*background-color: orange;*/
   /*background: linear-gradient(to bottom right, #948686, #c3b2a3, #e0cc84, #e6d2b9);*/
   height: 90px;
-  width: 55.2%;
-
+  width: 55.5%;
   margin-left:417px; 
-  border:10px solid skyblue; 
+  /*border:10px solid skyblue; */
   border-top:none;
   border-bottom:none; 
-
-
 }
 
+h1{
+  font-family:'Bungee Shade', cursive; 
+  font-size:70px; 
+  letter-spacing:2px; 
+}
 
 
 h2{
-  font-family:'Yellowtail', cursive;
-  /*background-color:#567B82; */
-
-  color:white;
+  font-family:'Raleway', sans-serif;
+  /*background-color:orange; */
+  color:black;
 }
 
 h3{
-  font-family:'Yellowtail', cursive;
-  background-color:#567B82;
-  color:white;
+  font-family:'Raleway', sans-serif;
+  /*background-color:orange;*/
+   color:black;
 }
 h4{
-  font-family:'Yellowtail',cursive;
+  font-family:'Raleway',sans-serif;
   font-size:;10px
-  background-color:#567B82;
-  color:white;
+  /*background-color:orange;*/
+  color:black;
 }
-
-
 #categories{
-  font-family:'Yellowtail', cursive;
-  font-size:30px;
+  font-family:'Raleway', sans-serif;
+  font-size:20px;
   text-decoration:none;
   color:black;
   padding-right:50px;
-   background-color: #567B82;
-   color:white;
+   /*background-color: orange;*/
+   color:black;
 }
 #categories:hover{
-
   color:#3DAEA9;
 }
 #tit,#desc{
-  font-family:'Yellowtail',cursive;
-  color:white;
-
-
-
-
+  font-family:'Raleway',sans-serif;
+  color:black;
 }
 
 #edit, #log_out{
-    font-family:'Yellowtail',cursive;
-   background-color: #567B82;
+    font-family:'Raleway',sans-serif;
+   /*background-color: orange;*/
    text-decoration:none;
-   color:white;
+    color:black;
  }
 
 #edit:hover{
@@ -177,25 +149,42 @@ h4{
  }
 
 #main{
-    background-color:#567B82;
+    background-color:tan;
     width:1050px;
-    border:10px solid skyblue; 
-border-top:none; 
-
+    /*height:1000px;*/
+    /*border:10px solid skyblue; */
+    border-top:none; 
+    /*opacity: 0.6;*/
     display:inline-block;
+    font-weight:bold; 
     /*padding-top:10px; */
+    /*#form{
+    margin-bottom:20px;
+  }*/
 
-#form{
-  margin-bottom:20px;
+  border-radius:5%; 
+}
+#delete{
+  color:tan;
+  background:black; 
+  font-family:'Raleway', sans-serif; 
+  border-radius:15%; 
+
+}
+#new_photo{
+   color:tan;
+  background:black; 
+  font-family:'Raleway', sans-serif; 
+  border-radius:15%;
 }
 
 </style>
 
 
 
-<header>
+<div id="">
   <img src="" alt="" />
-
+<h1>Aperture</h1>
 
  <% @categories.each do |category| %>
   <a id="categories" href="/crate/category/<%= category.id %>"><%= category.category %></a>
@@ -203,22 +192,15 @@ border-top:none;
 <a id="edit" href="/users/edit/<%=@user.id%>">Edit</a> |
   <a id= "log_out" href="/sessions/" data-method="delete">Log Out</a>
 
-
-
-</header>
+</div>
 
 
 <div id="main">
-<h2><%= @user.first_name %>'s Photo Gallery</h2>
-<h3><%= @user.description%></h3>
-  <div id="left">
-  <% if @photos[0] %>
-      <% @photos[0...10].each do |photo| %>
-        <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:large)%>" alt="" />
-      <%end%>
-  <% end %>
 
-</div>
+<h2><%= @user.first_name %>'s Photo Gallery</h2>
+
+<h3><%= @user.description%></h3>
+
 
 
 
@@ -251,13 +233,15 @@ border-top:none;
 <%if @photos.first%>
 <div id="centeredImage">
       <img id="cat" src="<%=@photos.first.avatar.url(:large)%>" alt="" />
+      <h2><%= @photos.first.title %></h2>
+      <h2><%= @photos.first.description %></h2>
 </div>
 <% end %>
 
 
 <div id="right">
-<% if @photos[10] %>
-    <% @photos[10...100].each do |photo| %>
+<% if @photos %>
+    <% @photos.each do  |photo| %>
       <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:large)%>" alt="" />
     <%end%>
 <%end%>
@@ -278,9 +262,9 @@ border-top:none;
     <option value="<%=category.id%>"><%=category.category%></option>
     <%end%>
   </select>
-  <input type="hidden" name="photo[user_id]" value="<%=session[:user_id]%>">
+  <input  type="hidden" name="photo[user_id]" value="<%=session[:user_id]%>">
   <input type="file" name="photo[avatar]">
-  <input type="submit" value="New Photo">
+ <button id="new_photo">New Photo</button>
 </form>
 
 </div>

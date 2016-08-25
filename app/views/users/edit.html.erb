@@ -1,4 +1,63 @@
+<link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Raleway" rel="stylesheet">
+<style type="text/css">
+ body{
+   background:#a89070;
+ }
+
+
+  #edit{
+      margin-left:540px; 
+      
+      width:800px;
+      text-align:center;
+      margin-right:10px;    
+      /*height:700px; */
+
+  }
+  h1{
+  font-family:'Bungee Shade', cursive; 
+  font-size:70px; 
+  letter-spacing:2px; 
+}
+p,h3{
+  font-family:'Raleway',cursive; 
+}
+
+#update{
+   color:tan;
+  background:black; 
+  font-family:'Raleway', sans-serif; 
+  border-radius:15%;
+}
+
+a{
+  text-decoration:none;
+  font-family:'Raleway', sans-serif;  
+  color:black;
+  font-size:20px; 
+}
+
+a:hover{
+  color:#3DAEA9;
+}
+
+#image {
+    margin-left:100px; 
+    margin-bottom:300px; 
+   
+}
+img{
+   height:500px;
+    width:500px;
+}
+span{
+  margin-left:40px; 
+}
+</style>
+
 <a href="/crate/<%= @user.id%>">Show Page</a>
+<div id="edit">
+<h1>Aperture</h1>
 <h3>Edit Your Profile</h3>
   <form action="/users/<%= @user.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
@@ -15,16 +74,23 @@
     </label>
   </p>
   <p>
-    <label> Email:
+    <label> <span>Email:</span>
       <input type="email" name="user[email]" value="<%= @user.email%>">
     </label>
   </p>
   <p>
     <label> Description:
-      <textarea name="user[description]" placeholder="<%= @user.description%>" value="<%= @user.description%>"></textarea>
+      <textarea name="user[description]"><%= @user.description%></textarea>
     </label>
   </p>
 
-	<input type="submit" value="Update Records">
+
+	<button id="update">Update Records</button>
 
 </form>
+
+
+</div>
+  <div id="image">
+       <%= image_tag 'camera.png' %>
+  </div>

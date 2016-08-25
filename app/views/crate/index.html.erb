@@ -1,6 +1,6 @@
 
-<link rel="stylesheet" type="text/css" href="<link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/assests/stylesheets/crate.scss">
+<link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Raleway" rel="stylesheet">
+<!-- <link rel="stylesheet" type="text/css" href="/assests/stylesheets/crate.scss"> -->
 <style type="text/css">
 
 @media only screen and (min-width: 1024px) {
@@ -22,14 +22,16 @@
 
 
 
+
+
  #log_in p{
   display:inline-block;
-  font-family:'Yellowtail', cursive ;
+  font-family:'Raleway', sans-serif ;
 
 
  }
  #log_in{
-  margin-left:70%;
+  margin-left:75%;
   display:inline-block;
   /*border:1px solid black;*/
   /*width:700px; */
@@ -40,14 +42,15 @@ h3{
   left:40px; 
   /*font-size:10px;*/
   /*padding-left:200px; */
-  font-family:'Yellowtail', cursive ;
+  font-family:'Raleway', sans-serif ;
 }
 
 h1{
   /*text-align:left;*/
   display:inline-block;
-  font-family:'Yellowtail', cursive ;
-  font-size:30px;
+  font-family:'Bungee Shade', cursive ;
+  font-size:50px;
+  margin-left:60px; 
   /*background-color:red; */
 }
 
@@ -56,7 +59,7 @@ button{
 /*vertical-align:center; */
  width:90px;
  display:inline-block;
- font-family:'Yellowtail', cursive ;'
+ font-family:'Raleway', sans-serif ;'
  font-weight:bold;
 
 }
@@ -71,7 +74,7 @@ textarea{
 #register{
   width:200px;
   height:500px; 
-  font-family:'Yellowtail', cursive ; 
+  font-family:'Raleway', sans-serif ; 
   padding-left:10px; 
   font-weight:bold; 
 margin-right:0px; 
@@ -87,15 +90,12 @@ margin-right:0px;
 
 }
 }
-/*
-header{
-  border:1px solid black;
-  width:900px; 
-}*/
+
+
+
 </style>
 
 
-<h1>Crate</h1>
 
 <header id="log_in">
   <img src="" alt="" />
@@ -107,6 +107,7 @@ header{
       });
   </script>
   <%end%>
+<h1>Aperture</h1>
   <form id="login" action="/sessions" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<p>
