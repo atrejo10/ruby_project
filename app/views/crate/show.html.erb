@@ -10,11 +10,12 @@
 body{
 
   
-    /*background:#5B5151;
-  background: linear-gradient(to bottom right, #948686, #c3b2a3, #e0cc84, #e6d2b9);*/
+    background:#5B5151;
+  /*background: linear-gradient(to bottom right, #948686, #c3b2a3, #e0cc84, #e6d2b9);*/
  
 
-  background-image:url("http://paper-backgrounds.com/textureimages/2012/07/old-gray-concrete-wall-texture.jpg"); 
+  /*background-image:url("http://paper-backgrounds.com/textureimages/2012/07/old-gray-concrete-wall-texture.jpg"); */
+  /*background:white;*/
   background-repeat:no-repeat;
   background-size:cover; 
   /*width:1000px;*/
@@ -98,10 +99,12 @@ header{
   background-color: #567B82;
   /*background: linear-gradient(to bottom right, #948686, #c3b2a3, #e0cc84, #e6d2b9);*/
   height: 90px;
-  width: 78%;
-  border: 1px solid gray;
-  border-left:none;
-  border-right:none;
+  width: 55.2%;
+
+  margin-left:417px; 
+  border:10px solid skyblue; 
+  border-top:none;
+  border-bottom:none; 
 
   
 }
@@ -167,6 +170,8 @@ h4{
 #main{
     background-color:#567B82;
     width:1050px;
+    border:10px solid skyblue; 
+border-top:none; 
 
     display:inline-block; 
     /*padding-top:10px; */
@@ -195,8 +200,8 @@ h4{
 
 
 <div id="main">
-<h3><%= @user.description%></h3>
 <h2><%= @user.first_name %>'s Photo Gallery</h2>
+<h3><%= @user.description%></h3>
   <div id="left">
   <% if @photos[0] %>
       <% @photos[0...10].each do |photo| %>
