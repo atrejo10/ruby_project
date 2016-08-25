@@ -8,6 +8,7 @@
 
 }
 body{
+
   
     /*background:#5B5151;
   background: linear-gradient(to bottom right, #948686, #c3b2a3, #e0cc84, #e6d2b9);*/
@@ -17,23 +18,25 @@ body{
   background-repeat:no-repeat;
   background-size:cover; 
   /*width:1000px;*/
- 
+
+
+  
 }
 #centeredImage{
   padding-bottom: 5em;
-  display:inline-block; 
+  display:inline-block;
   /*padding-right:200px; */
     position:relative;
     bottom:120px;
 
-    
-    background-color:#567B82; 
+
+    background-color:#567B82;
 }
 
 #centeredImage img {
     width:600px;
     height:400px;
-    border:1px solid gray; 
+    border:1px solid gray;
 
 }
 #title, #description{
@@ -52,13 +55,13 @@ body{
   /*background-color:#828E8C;*/
   background-color:#567B82;
   display: inline-block;
-  margin-right:20px; 
-  
+  margin-right:20px;
 
-  overflow:scroll; 
+
+  overflow:scroll;
 }
 #left img{
-  border:1px solid gray;  
+  border:1px solid gray;
   display:block;
 }
 #right{
@@ -68,9 +71,9 @@ body{
   width:200px;
   height: 700px;
   background-color: #567B82;
-  margin-left:20px; 
-  display:inline-block; 
-  overflow:scroll; 
+  margin-left:20px;
+  display:inline-block;
+  overflow:scroll;
 
 }
 #right img{
@@ -99,52 +102,58 @@ header{
   border: 1px solid gray;
   border-left:none;
   border-right:none;
+
   
 }
 
+
+
 h2{
-  font-family:'Yellowtail', cursive; 
-  background-color:#567B82; 
+  font-family:'Yellowtail', cursive;
+  /*background-color:#567B82; */
+
   color:white;
 }
 
 h3{
-  font-family:'Yellowtail', cursive; 
-  background-color:#567B82; 
+  font-family:'Yellowtail', cursive;
+  background-color:#567B82;
   color:white;
 }
 h4{
-  font-family:'Yellowtail',cursive; 
-  font-size:;10px 
-  background-color:#567B82; 
+  font-family:'Yellowtail',cursive;
+  font-size:;10px
+  background-color:#567B82;
   color:white;
 }
 
 
 #categories{
   font-family:'Yellowtail', cursive;
-  font-size:30px;  
+  font-size:30px;
   text-decoration:none;
-  color:black;  
-  padding-right:50px; 
+  color:black;
+  padding-right:50px;
    background-color: #567B82;
    color:white;
 }
 #categories:hover{
 
-  color:#3DAEA9; 
+  color:#3DAEA9;
 }
 #tit,#desc{
-  font-family:'Yellowtail',cursive; 
+  font-family:'Yellowtail',cursive;
   color:white;
+
 
    
 
 }
+
 #edit, #log_out{
-   font-family:'Yellowtail',cursive; 
+    font-family:'Yellowtail',cursive;
    background-color: #567B82;
-   text-decoration:none; 
+   text-decoration:none;
    color:white;
  }
 
@@ -158,12 +167,12 @@ h4{
 #main{
     background-color:#567B82;
     width:1050px;
+
     display:inline-block; 
     /*padding-top:10px; */
-}
 
 #form{
-  margin-bottom:20px; 
+  margin-bottom:20px;
 }
 
 </style>
@@ -181,7 +190,7 @@ h4{
   <a id= "log_out" href="/sessions/" data-method="delete">Log Out</a>
 
 
-  
+
 </header>
 
 
@@ -193,8 +202,8 @@ h4{
       <% @photos[0...10].each do |photo| %>
         <img class="thumbnail" id="<%=photo.id%>" src="<%=photo.avatar.url(:large)%>" alt="" />
       <%end%>
-  <% end %>    
-  
+  <% end %>
+
 </div>
 
 
@@ -239,7 +248,7 @@ h4{
 </div>
 
 <form id="form" action="/photos" enctype="multipart/form-data" method="post">
-  
+
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label id="tit">Title:</label>
     <input type="text" name="photo[title]" value="">
