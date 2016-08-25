@@ -6,7 +6,7 @@
 	}
 	body{
 		height:100%;
-		background:white; 
+		background:white;
 		/*background:linear-gradient(#e6f5ff,#ccebff,#b3e0ff,#99d6ff); */
 
 	}
@@ -74,7 +74,6 @@
         $.get('/crate/find/' + id, function(response)
         {
         	$("#formdiv").html(response);
-
         });
         $('#large').attr('src', $(this).attr('src'));
       })
