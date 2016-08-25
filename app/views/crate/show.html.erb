@@ -9,18 +9,18 @@
 }
 body{
 
-  
+
     /*background:#5B5151;
   background: linear-gradient(to bottom right, #948686, #c3b2a3, #e0cc84, #e6d2b9);*/
- 
 
-  background-image:url("http://paper-backgrounds.com/textureimages/2012/07/old-gray-concrete-wall-texture.jpg"); 
+
+  background-image:url("http://paper-backgrounds.com/textureimages/2012/07/old-gray-concrete-wall-texture.jpg");
   background-repeat:no-repeat;
-  background-size:cover; 
+  background-size:cover;
   /*width:1000px;*/
 
 
-  
+
 }
 #centeredImage{
   padding-bottom: 5em;
@@ -42,7 +42,7 @@ body{
 #title, #description{
   text-align: center;
   font-family:'Yellowtail', cursive;
-    background-color:#567B82; 
+    background-color:#567B82;
   /*color:#E7856F; */
 
 
@@ -102,6 +102,11 @@ header{
   border: 1px solid gray;
   border-left:none;
   border-right:none;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2e11e878819b70733388bab5abf84ede64fa36da
 }
 
 
@@ -141,8 +146,15 @@ h4{
 }
 #tit,#desc{
   font-family:'Yellowtail',cursive;
+
   color:white;  
+
 }
+
+
+
+
+
 
 #edit, #log_out{
     font-family:'Yellowtail',cursive;
@@ -163,7 +175,10 @@ h4{
     width:1050px;
     /*padding-top:10px; */
 
-    display:inline-block; 
+
+    display:inline-block;
+    /*padding-top:10px; */
+}
 
 #form{
   margin-bottom:20px;
@@ -209,23 +224,31 @@ h4{
         var id = $(this).attr("id");
         $.get('/photos/find/' + id, function(response)
         {
-          console.log(response);
-          var description = "";
-          description += "<h3>" + response.description + "</h3>"
-          var title = "";
-          title += "<h2>" + response.title + "</h2>"
-          $('#description').html(description);
-          $('#title').html(title);
+          $("#centeredImage").html(response);
+
         });
-          $('.largerimage').attr('src', $(this).attr('src'));
+          $('#cat').attr('src', $(this).attr('src'));
       })
   })
+
+
+  //
+  // $(document).ready(function(){
+  //     $('.photo').on('click', function(){
+  //       var id = $(this).attr("id");
+  //       $.get('/crate/find/' + id, function(response)
+  //       {
+  //       	$("#formdiv").html(response);
+  //       });
+  //       $('#large').attr('src', $(this).attr('src'));
+  //     })
+  // })
+
+
 </script>
 <%if @photos.first%>
 <div id="centeredImage">
-      <h2 id="title"><%=@photos.first.title%></h2>
-      <h3 id="description"><%=@photos.first.description%></h3>
-      <img class="largerimage" src="<%=@photos.first.avatar.url(:large)%>" alt="" />
+      <img id="cat" src="<%=@photos.first.avatar.url(:large)%>" alt="" />
 </div>
 <% end %>
 
@@ -257,5 +280,8 @@ h4{
   <input type="file" name="photo[avatar]">
   <input type="submit" value="New Photo">
 </form>
+
+</div>
+<div class="hello">
 
 </div>

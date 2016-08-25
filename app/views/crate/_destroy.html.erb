@@ -1,0 +1,10 @@
+<img src="<%= photo.avatar.url%>" alt="" />
+<p> <%= photo.description%></p>
+<p> <%= photo.title%></p>
+
+<form action='/photos' method='post'>
+	<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+	<input type='hidden' name='_method' value='delete'>
+	<input id='photo_destroy' type='hidden' name='photo_id' value='<%= photo.id %>'>
+	<input type='submit' value='Destroy'>
+</form>
