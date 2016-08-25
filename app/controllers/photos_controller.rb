@@ -10,8 +10,15 @@ class PhotosController < ApplicationController
     end
 
   def find
-    @photo = Photo.joins(:user).find(params[:id])
-    render json: @photo
+    # photo = Photo.find(params[:id])
+      render partial: "crate/destroy", locals: { photo: Photo.joins(:user).where("photos.id = ?", params[:id])[0] }
+    # @photo = Photo.joins(:user).find(params[:id])
+    # render json: @photo
+  end
+
+  def destroy
+    Photo.find(params[:photo_id]).destroy
+    redirect_to :back
   end
 
 
