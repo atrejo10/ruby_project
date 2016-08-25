@@ -15,7 +15,11 @@ class CrateController < ApplicationController
   end
 
   def find
-    @photo = Photo.joins(:user).select(:first_name, "photos.description", "photos.id", :title, :last_name).where("photos.id = ?", params[:id])
-    render json: @photo
+    photo = Photo.find(params[:id])
+    if photo.users_liked.include? current_user
+      render partial: "crate/unlike", locals: { photo: Photo.joins(:user).select(:first_name, "photos.description", "photos.id", :title, :last_name).where("photos.id = ?", params[:id])[0] }
+    else
+      render partial: "crate/like", locals: { photo: Photo.joins(:user).select(:first_name, "photos.description", "photos.id", :title, :last_name).where("photos.id = ?", params[:id])[0] }
+    end
   end
 end

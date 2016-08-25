@@ -1,0 +1,10 @@
+<h3><%= photo.description %></h3>
+<p><%= photo.first_name %></p>
+<p><%= photo.last_name %></p>
+
+<form action='/likes' method='post'>
+	<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+	<input type='hidden' name='_method' value='delete'>
+	<input id='photo_destroy' type='hidden' name='photo_id' value='<%= photo.id %>'>
+	<input type='submit' value='Unlike'>
+</form>

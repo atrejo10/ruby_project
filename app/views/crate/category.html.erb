@@ -1,11 +1,12 @@
 <link rel="stylesheet" type="text/css" href="<link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+
 <style type="text/css">
 	html{
 		height:100%;
 	}
 	body{
 		height:100%;
-		background-color:white; 
+		background:white; 
 		/*background:linear-gradient(#e6f5ff,#ccebff,#b3e0ff,#99d6ff); */
 
 	}
@@ -72,23 +73,10 @@
         var id = $(this).attr("id");
         $.get('/crate/find/' + id, function(response)
         {
-
-          var description = "";
-          description += "<h3>" + response[0].description + "</h3>";
-					var author = "";
-					var title = "";
-					var photo_id = response[0].id
-					$("#photo_destroy").attr("value", photo_id);
-					$("#photo_like").attr("value", photo_id);
-					author += "<h3>" + response[0].first_name +' ' + response[0].last_name + "</h3>";
-          title += "<h2>" + response[0].title + "</h2>";
-					$('#photo_id').html(photo_id)
-          $('#description').html(description);
-					$('#author').html(author)
-          $('#title').html(title);
+        	$("#formdiv").html(response);
 
         });
-          $('#large').attr('src', $(this).attr('src'));
+        $('#large').attr('src', $(this).attr('src'));
       })
   })
 
@@ -109,19 +97,5 @@
 		<p id="photo_id"><%=@photo.first.id%>	</p>
 		<%end%>
 <div id="formdiv">
-
-	<form action='/likes' method='post'>
-		<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-		<input type='hidden' name='_method' value='delete'>
-		<input id='photo_destroy' type='hidden' name='photo_id' value=''>
-		<input type='submit' value='Unlike'>
-	</form>
-
-		<form id="like" action='/likes' method='post'>
-			<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-			<input type='hidden' name='user_id' value='<%= current_user.id %>'>
-			<input id="photo_like" type="hidden" name="photo_id" value="">
-			<input type='submit' value='Like'>
-		</form>
 </div>
 </div>
