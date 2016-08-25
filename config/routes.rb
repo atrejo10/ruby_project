@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'crate/index'
   root 'crate#index'
-  patch 'users/:id'=>'users#edit'
   get 'crate/category/:id'=> 'crate#category'
   get'crate/find:id'=> 'crate#find'
   get'crate/show/:id'=>'crate#show'
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
   post '/sessions' => 'sessions#create'
   post 'users' => 'users#create'
   get 'users/edit/:id' => 'users#edit'
+  patch 'users/:id' => "users#update"
   post 'photos' => 'photos#create'
   get 'crate/:id' => 'crate#show', :as => "crate"
   get 'photos/find/:id' => 'photos#find'
